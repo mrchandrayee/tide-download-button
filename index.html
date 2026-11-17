@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07111d"><title>TIDE — Download Button</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="browser-bar">
+  <div class="traffic"><i></i><i></i><i></i></div>
+  <div class="brand">TIDE <span>—</span> <b>HTML</b> <strong>CSS</strong> <em>JS</em></div>
+  <div class="path">localhost / tide</div>
+</div>
+<main class="demo">
+  <div class="eyebrow">T I D E</div>
+  <h1>Download Button</h1>
+  <section class="buttons" aria-label="Download button states">
+    <div class="example">
+      <button class="tide tide--success" id="success-btn" type="button" aria-label="Download file successfully">
+        <svg class="tide__svg" viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="tide__track" cx="50" cy="50" r="47.6"/>
+          <circle class="tide__arc" cx="50" cy="50" r="47.6"/>
+          <path class="tide__glyph tide__arrow" d="M50 29V67 M34 51L50 67L66 51"/>
+          <path class="tide__glyph tide__check" d="M29 51L44 65L72 36"/>
+          <path class="tide__glyph tide__dash" d="M30 50H70"/>
+        </svg>
+        <span class="sr-only">Download successful demo</span>
+      </button>
+      <h2 class="success-label">SUCCESS</h2>
+      <p>every byte arrived</p>
+      <button class="replay" data-target="success-btn">Replay success</button>
+    </div>
+    <div class="example">
+      <button class="tide tide--fail" id="fail-btn" type="button" aria-label="Simulate a failed download">
+        <svg class="tide__svg" viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="tide__track" cx="50" cy="50" r="47.6"/>
+          <circle class="tide__arc" cx="50" cy="50" r="47.6"/>
+          <path class="tide__glyph tide__arrow" d="M50 29V67 M34 51L50 67L66 51"/>
+          <path class="tide__glyph tide__check" d="M29 51L44 65L72 36"/>
+          <path class="tide__glyph tide__dash" d="M30 50H70"/>
+        </svg>
+        <span class="sr-only">Simulate failed download</span>
+      </button>
+      <h2 class="fail-label">FAIL</h2>
+      <p>the connection dropped</p>
+      <button class="replay" data-target="fail-btn">Replay failure</button>
+    </div>
+  </section>
+  <div class="credit">@_code_and_chill_</div>
+</main>
+<section class="source-preview" aria-label="Source file overview">
+  <article><h3><i class="html-dot"></i> index.html</h3><pre><code>&lt;!-- ONE open polyline, four postures.
+     Nothing swaps, nothing cross-fades. --&gt;
+&lt;span class="tide" data-state="done"&gt;
+  &lt;a class="tide__btn" download
+     href="/downloads/kit.zip"
+     aria-label="Download kit.zip"&gt;
+    &lt;svg viewBox="-50 -50 100 100"&gt;
+      &lt;circle class="tide__track" r="47.6"/&gt;
+      &lt;circle class="tide__arc" r="47.6"/&gt;
+      &lt;circle class="tide__pip" r="1.85"/&gt;
+      &lt;path class="tide__stem"/&gt;
+      &lt;path class="tide__blade"/&gt;
+      &lt;path class="tide__pct"/&gt;
+    &lt;/svg&gt;
+  &lt;/a&gt;
+&lt;/span&gt;</code></pre></article>
+  <article><h3><i class="css-dot"></i> app.css</h3><pre><code>/* The ring IS the button's own rim,
+   at 47.6 of a 50-unit radius. */
+.tide__track {
+  stroke: var(--track);
+  stroke-width: 3.7;
+}
+.tide__arc {
+  stroke: var(--on);
+  stroke-width: 3.7;
+  stroke-linecap: round;
+}
+.tide__blade {
+  stroke: var(--on);
+  stroke-width: 2.9;
+  stroke-linejoin: round;
+}
+/* Failure is a FIELD change, not an
+   ink change: red ink on the field. */
+.tide[data-state="fail"] {
+  --fill: #ef303a;
+}</code></pre></article>
+  <article><h3><i class="js-dot"></i> app.js</h3><pre><code>// Three points and a knot. All four
+// postures use the same twelve numbers.
+const ARROW = [[-15.9,3.4],[0,22],
+  [15.9,3.4]], k: .50;
+
+// The ripple is the transfer rate.
+// Fast at the start, slower release.
+const rates = [0.14, 0.28, 0.43, 0.68, 1];
+
+// A callback is not movement — BYTES
+// are. Nothing in 800ms is a stall.
+if (now() - lastMove > 800) {
+  set("stall");
+}</code></pre></article>
+</section>
+<script src="app.js"></script>
+</body></html>
